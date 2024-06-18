@@ -526,7 +526,7 @@ True
 False
 -}
 isThird42 :: [Int] -> Bool
-isThird42 (x:y:42:rest) = True 
+isThird42 (_:_:42:_) = True 
 isThird42 _ = False
 
 {- |
@@ -870,7 +870,9 @@ list.
 
 🕯 HINT: Use the 'cycle' function
 -}
-rotate = error "rotate: Not implemented!"
+rotate n xs 
+  | n < 0 = []
+  | otherwise = subList n (n - 1 + length xs) (cycle xs)
 
 {- |
 =💣= Task 12*
@@ -886,7 +888,8 @@ and reverses it.
   function, but in this task, you need to implement it manually. No
   cheating!
 -}
-rewind = error "rewind: Not Implemented!"
+rewind [] = []
+rewind (x:xs) = rewind xs ++ [x]
 
 
 {-
